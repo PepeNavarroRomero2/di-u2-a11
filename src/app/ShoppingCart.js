@@ -20,9 +20,13 @@ export default function ShoppingCart() {
     setProducts
   ] = useState(initialProducts)
 
-  function handleIncreaseClick(productId) {
-
-  }
+    function handleIncreaseClick(productId) {
+      const nuevaArray = products.map((product) =>
+        product.id === productId ? {...product, count : product.count+1} : product
+      )
+      setProducts(nuevaArray)
+    }
+  
 
   return (
     <ul>

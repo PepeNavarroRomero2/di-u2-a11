@@ -33,6 +33,13 @@ export default function ShoppingCart() {
     }))
   }
 
+  function handleDecreaseClick(productId){
+    const nuevaArray = (products.map(product => {
+      product.id === productId ? {...product, count : product.count - 1} : product
+    }))
+    setProducts(nuevaArray.filter(product => product.count > 0))
+  }
+
   return (
     <ul>
       {products.map(product => (
@@ -45,7 +52,9 @@ export default function ShoppingCart() {
           }}>
             +
           </button>
-          <button>
+          <button onClick={()=>{
+            handleDecreaseClick(product.id)
+          }}>
             –
           </button>
         </li>

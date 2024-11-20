@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import AddTodo from './AddTodo.js';
 import TaskList from './TaskList.js';
+import next from 'next';
 
 let nextId = 3;
 const initialTodos = [
@@ -15,11 +16,11 @@ export default function TaskApp() {
   );
 
   function handleAddTodo(title) {
-    todos.push({
-      id: nextId++,
-      title: title,
-      done: false
-    });
+      setTodos(todos.concat({
+        id : nextId++,
+        title : title,
+        done : false
+      }))
   }
 
   function handleChangeTodo(nextTodo) {
